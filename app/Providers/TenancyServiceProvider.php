@@ -154,7 +154,18 @@ class TenancyServiceProvider extends ServiceProvider
                     ->group(base_path('routes/tenant/web.php'));
             }
 
-            if (file_exists(base_path('routes/tenant/api.php'))) {
+            if (file_exists(base_path('routes/tenant/admin_api.php'))) {
+                Route::middleware([
+                    'api',
+                    InitializeTenancyByDomain::class,
+                    PreventAccessFromCentralDomains::class,
+                ])
+                    ->prefix('admin_api')
+                    ->as('tenant.admin.api.')
+                    ->group(base_path('routes/tenant/admin_api.php'));
+            }
+
+            if (file_exists(base_path('routes/tenant/customer_api.php'))) {
                 Route::middleware([
                     'api',
                     InitializeTenancyByDomain::class,
@@ -162,7 +173,7 @@ class TenancyServiceProvider extends ServiceProvider
                 ])
                     ->prefix('api')
                     ->as('tenant.api.')
-                    ->group(base_path('routes/tenant/api.php'));
+                    ->group(base_path('routes/tenant/customer_api.php'));
             }
         });
     }

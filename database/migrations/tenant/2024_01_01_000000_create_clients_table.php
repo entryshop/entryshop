@@ -13,6 +13,8 @@ return new class extends Migration {
             $table->string('name')->nullable();
             $table->string('key')->nullable();
             $table->string('secret')->nullable();
+            $table->boolean('is_admin')->default(true);
+            $table->boolean('is_customer')->default(true);
             $table->text('scope')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();

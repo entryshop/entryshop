@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Tenant\Api;
+namespace App\Http\Controllers\Tenant\CustomerApi;
 
 use App\Http\Controllers\ApiController;
 
