@@ -7,6 +7,7 @@ use App\Models\Coupon;
 use App\Models\Customer;
 use App\Models\CustomerEvent;
 use App\Models\CustomEvent;
+use App\Models\TierSet;
 use Illuminate\Database\Seeder;
 use Parse\Admin\Models\AdminUser;
 
@@ -54,13 +55,30 @@ class TenantSeeder extends Seeder
                 'count' => 1000,
                 'date'  => '2024-01-06',
                 'a'     => '2024-01-06',
-                'b'     => '2024-01-06',
-                'v'     => '2024-01-06',
             ],
         ]);
 
         Coupon::factory()->create([
             'name' => '满 100 减 12',
+        ]);
+
+        $tier_set = TierSet::create([
+            'name' => 'Membership',
+        ]);
+
+        $tier_set->tiers()->create([
+            'name'  => 'Bronze',
+            'level' => 1,
+        ]);
+
+        $tier_set->tiers()->create([
+            'name'  => 'Silver',
+            'level' => 2,
+        ]);
+
+        $tier_set->tiers()->create([
+            'name'  => 'Gold',
+            'level' => 3,
         ]);
     }
 }

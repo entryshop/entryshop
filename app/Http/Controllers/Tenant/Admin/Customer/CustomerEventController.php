@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Tenant\Admin;
+namespace App\Http\Controllers\Tenant\Admin\Customer;
 
 use App\Models\CustomerEvent;
 use Parse\Admin\Http\Controllers\CrudController;

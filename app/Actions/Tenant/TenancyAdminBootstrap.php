@@ -25,11 +25,11 @@ class TenancyAdminBootstrap
                     'children' => [
                         [
                             'title' => 'List of members',
-                            'url'   => '/admin',
+                            'url'   => '/admin/customers',
                         ],
                         [
                             'title' => 'Tiers',
-                            'url'   => '/admin',
+                            'url'   => '/admin/tiers',
                         ],
                         [
                             'title' => 'Segments',
