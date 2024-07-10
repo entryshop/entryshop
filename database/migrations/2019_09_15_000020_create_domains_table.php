@@ -16,22 +16,13 @@ class CreateDomainsTable extends Migration
     public function up(): void
     {
         Schema::create('domains', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('domain', 255)->unique();
             $table->string('tenant_id');
-
+            $table->unsignedTinyInteger('is_primary')->default(false);
+            $table->unsignedTinyInteger('is_fallback')->default(false);
+            $table->string('certificate_status', 64)->nullable();
             $table->timestamps();
-            $table->foreign('tenant_id')->references('id')->on('tenants')->onUpdate('cascade')->onDelete('cascade');
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('domains');
     }
 }

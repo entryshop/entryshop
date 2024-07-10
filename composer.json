@@ -1,14 +1,12 @@
 {
-    "name": "laravel/laravel",
+    "name": "entryshop/entryshop",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
-    "license": "MIT",
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
-        "stancl/tenancy": "^3.8"
+        "stancl/tenancy": "^3.8",
+        "parse/admin": "*@dev"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -59,9 +57,19 @@
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "wikimedia/composer-merge-plugin": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./packages/*/*",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
     "prefer-stable": true
 }
