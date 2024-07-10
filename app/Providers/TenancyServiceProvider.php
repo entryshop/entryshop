@@ -13,6 +13,8 @@ use Stancl\Tenancy\Events;
 use Stancl\Tenancy\Jobs;
 use Stancl\Tenancy\Listeners;
 use Stancl\Tenancy\Middleware;
+use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
+use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 
 class TenancyServiceProvider extends ServiceProvider
 {
@@ -131,9 +133,36 @@ class TenancyServiceProvider extends ServiceProvider
                 }
             }
 
-            if (file_exists(base_path('routes/tenant.php'))) {
-                Route::namespace(static::$controllerNamespace)
-                    ->group(base_path('routes/tenant.php'));
+            if (file_exists(base_path('routes/tenant/admin.php'))) {
+                Route::middleware([
+                    'web',
+                    InitializeTenancyByDomain::class,
+                    PreventAccessFromCentralDomains::class,
+                ])
+                    ->as('tenant.admin.')
+                    ->prefix('admin')
+                    ->group(base_path('routes/tenant/admin.php'));
+            }
+
+            if (file_exists(base_path('routes/tenant/web.php'))) {
+                Route::middleware([
+                    'web',
+                    InitializeTenancyByDomain::class,
+                    PreventAccessFromCentralDomains::class,
+                ])
+                    ->as('tenant.')
+                    ->group(base_path('routes/tenant/web.php'));
+            }
+
+            if (file_exists(base_path('routes/tenant/api.php'))) {
+                Route::middleware([
+                    'api',
+                    InitializeTenancyByDomain::class,
+                    PreventAccessFromCentralDomains::class,
+                ])
+                    ->prefix('api')
+                    ->as('tenant.api.')
+                    ->group(base_path('routes/tenant/api.php'));
             }
         });
     }
