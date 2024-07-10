@@ -45,6 +45,7 @@ Route::middleware([
 
         Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
         Route::post('login', [AuthController::class, 'submitLogin'])->name('login.submit');
+        Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
         Route::group(['middleware' => admin()->getAuthMiddleware()], function () {
             Route::get('/', DashboardController::class)->name('dashboard');

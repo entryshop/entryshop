@@ -24,10 +24,10 @@ class AdminUserController extends CrudController
                 'type' => 'image',
             ],
             [
-                'name'        => 'password',
-                'native_type' => 'password',
-                'list'        => false,
-                'value'       => '',
+                'name'  => 'password',
+                'list'  => false,
+                'value' => '',
+                'rules' => ($id ? 'nullable' : 'required') . '|min:6|max:30',
             ],
             [
                 'name'    => 'actions',
@@ -38,6 +38,17 @@ class AdminUserController extends CrudController
                 },
             ],
         ];
+    }
+
+    public function updating($data)
+    {
+        if (!empty($data['password'])) {
+            $data['password'] = bcrypt($data['password']);
+        } else {
+            unset($data['password']);
+        }
+
+        return $data;
     }
 }
 

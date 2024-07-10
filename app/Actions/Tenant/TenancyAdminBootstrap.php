@@ -20,6 +20,26 @@ class TenancyAdminBootstrap
                     'url'   => '/admin',
                 ],
                 [
+                    'title' => 'Customers',
+                    'icon'  => 'ri-group-line',
+                    'url'   => '/admin',
+                ],
+                [
+                    'title' => 'Wallets',
+                    'icon'  => 'ri-wallet-3-line',
+                    'url'   => '/admin',
+                ],
+                [
+                    'title' => 'Coupons',
+                    'icon'  => 'ri-coupon-3-line',
+                    'url'   => '/admin',
+                ],
+                [
+                    'title' => 'Campaigns',
+                    'icon'  => 'ri-flag-line',
+                    'url'   => '/admin',
+                ],
+                [
                     'title'    => 'Settings',
                     'icon'     => 'ri-settings-3-line',
                     'children' => [
@@ -27,11 +47,17 @@ class TenancyAdminBootstrap
                             'title' => 'Users',
                             'url'   => '/admin/admin-users',
                         ],
+                        [
+                            'title' => 'Developer',
+                            'url'   => '/admin/admin-users',
+                        ],
                     ],
                 ],
             ])
             ->uploadUsing(fn($file) => tenant_asset($file->store('uploads')))
-            ->brandName($tenant->id);
+            ->logo('/images/logo-dark.png')
+            ->miniLogo('/images/logo-dark-sm.png')
+            ->brandName($tenant->name);
     }
 
     public function asListener(TenancyInitialized $event)
