@@ -52,7 +52,7 @@ class TenancyAdminBootstrap
                 [
                     'title' => 'Wallets',
                     'icon'  => 'ri-wallet-3-line',
-                    'url'   => '/admin',
+                    'url'   => '/admin/wallets',
                 ],
                 [
                     'title' => 'Coupons',
