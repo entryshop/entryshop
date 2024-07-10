@@ -20,9 +20,34 @@ class TenancyAdminBootstrap
                     'url'   => '/admin',
                 ],
                 [
-                    'title' => 'Customers',
-                    'icon'  => 'ri-group-line',
-                    'url'   => '/admin',
+                    'title'    => 'Members',
+                    'icon'     => 'ri-group-line',
+                    'children' => [
+                        [
+                            'title' => 'List of members',
+                            'url'   => '/admin',
+                        ],
+                        [
+                            'title' => 'Tiers',
+                            'url'   => '/admin',
+                        ],
+                        [
+                            'title' => 'Segments',
+                            'url'   => '/admin',
+                        ],
+                        [
+                            'title' => 'Referrers',
+                            'url'   => '/admin',
+                        ],
+                        [
+                            'title' => 'Transactions',
+                            'url'   => '/admin',
+                        ],
+                        [
+                            'title' => 'Custom events',
+                            'url'   => '/admin',
+                        ],
+                    ],
                 ],
                 [
                     'title' => 'Wallets',
@@ -37,6 +62,21 @@ class TenancyAdminBootstrap
                 [
                     'title' => 'Campaigns',
                     'icon'  => 'ri-flag-line',
+                    'url'   => '/admin',
+                ],
+                [
+                    'title' => 'Badges',
+                    'icon'  => 'ri-copper-diamond-line',
+                    'url'   => '/admin',
+                ],
+                [
+                    'title' => 'Rewards',
+                    'icon'  => 'ri-gift-2-line',
+                    'url'   => '/admin',
+                ],
+                [
+                    'title' => 'Scanning',
+                    'icon'  => ' ri-qr-scan-2-line',
                     'url'   => '/admin',
                 ],
                 [
