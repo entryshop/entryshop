@@ -3,6 +3,7 @@
 namespace App\Models\Central;
 
 use App\Exceptions\NoPrimaryDomainException;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Parse\Admin\Concerns\Searchable;
 use Stancl\Tenancy\Contracts\TenantWithDatabase;
 use Stancl\Tenancy\Database\Concerns\HasDatabase;
@@ -15,6 +16,7 @@ class Tenant extends BaseTenant implements TenantWithDatabase
     use HasDatabase, HasDomains;
     use Searchable;
     use MaintenanceMode;
+    use HasFactory;
 
     public $searches = ['data', 'id'];
 

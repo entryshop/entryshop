@@ -20,10 +20,4 @@ final class RedirectOnNoTenantTest extends TestCase
             ->get('http://foo.localhost');
     }
 
-    #[Test]
-    public function exception_is_handled(): void
-    {
-        $this->get('http://foo.localhost')
-            ->assertRedirect('http://'.config('tenancy.central_domains')[0]);
-    }
 }

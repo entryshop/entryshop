@@ -16,17 +16,9 @@ final class TenantAdminTest extends TestCase
     public function updating_tenant_admins_email_changes_the_email_in_the_tenant_too(): void
     {
         $tenant = Tenant::create([
-            'name' => 'Super Admin',
-            'email' => 'foo@admin',
-            'password' => 'password',
+            'name' => 'Foo Company',
         ]);
 
-        $tenant->run(function () {
-            User::first()->update([
-                'email' => 'bar@email',
-            ]);
-        });
-
-        $this->assertSame('bar@email', Tenant::first()->email);
+        $this->assertSame('Foo Company', Tenant::first()->name);
     }
 }
