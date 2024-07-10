@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Client;
 use App\Models\Customer;
+use App\Supports\Helper;
 use Illuminate\Database\Seeder;
 use Parse\Admin\Models\AdminUser;
 
@@ -26,8 +27,13 @@ class TenantSeeder extends Seeder
         ]);
 
         Customer::factory()->create([
-            'email' => 'user@sample.com',
-            'password' => bcrypt('password')
+            'email'    => 'user@sample.com',
+            'password' => bcrypt('password'),
+        ]);
+
+        Helper::setting([
+            'foo' => 'bar',
+            'baz' => 'qux',
         ]);
     }
 }
