@@ -45,7 +45,7 @@ class TenancyAdminBootstrap
                         ],
                         [
                             'title' => 'Custom events',
-                            'url'   => '/admin',
+                            'url'   => '/admin/customer-events',
                         ],
                     ],
                 ],

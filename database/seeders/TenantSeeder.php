@@ -4,7 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\Client;
 use App\Models\Customer;
-use App\Supports\Helper;
+use App\Models\CustomerEvent;
+use App\Models\CustomEvent;
 use Illuminate\Database\Seeder;
 use Parse\Admin\Models\AdminUser;
 
@@ -26,14 +27,32 @@ class TenantSeeder extends Seeder
             'is_admin' => true,
         ]);
 
-        Customer::factory()->create([
+        $customer = Customer::factory()->create([
             'email'    => 'user@sample.com',
             'password' => bcrypt('password'),
         ]);
 
-        Helper::setting([
-            'foo' => 'bar',
-            'baz' => 'qux',
+        $custom_event = CustomEvent::create([
+            'name'       => 'Daily Steps',
+            'code'       => 'daily_steps',
+            'attributes' => [
+                [
+                    'name' => 'count',
+                ],
+                [
+                    'name' => 'date',
+                ],
+            ],
+        ]);
+
+        $customer_event = CustomerEvent::create([
+            'event_id'    => $custom_event->id,
+            'customer_id' => $customer->id,
+            'event_date'  => now(),
+            'attributes'  => [
+                'count' => 1000,
+                'date'  => '2024-01-06',
+            ],
         ]);
     }
 }

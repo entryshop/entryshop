@@ -16,13 +16,16 @@ return new class extends Migration {
             $table->boolean('active')->default(false);
             $table->timestamps();
         });
-    }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('custom_events');
+        Schema::create('customer_events', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('customer_id');
+            $table->foreignId('event_id');
+            $table->foreignId('client_id')->nullable();
+            $table->text('attributes')->nullable();
+            $table->text('payload')->nullable();
+            $table->dateTime('event_date')->nullable();
+            $table->timestamps();
+        });
     }
 };

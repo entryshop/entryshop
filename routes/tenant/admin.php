@@ -1,7 +1,8 @@
 <?php
 
-
 use App\Http\Controllers\Tenant\Admin\AdminUserController;
+use App\Http\Controllers\Tenant\Admin\CustomerEventController;
+use App\Http\Controllers\Tenant\Admin\CustomEventController;
 use App\Http\Controllers\Tenant\Admin\DashboardController;
 use App\Http\Controllers\Tenant\Admin\WalletController;
 use Illuminate\Support\Facades\Route;
@@ -15,4 +16,6 @@ Route::group(['middleware' => admin()->getAuthMiddleware()], function () {
     Route::get('/', DashboardController::class)->name('dashboard');
     Route::resource('admin-users', AdminUserController::class);
     Route::resource('wallets', WalletController::class);
+    Route::resource('customer-events', CustomerEventController::class);
+    Route::resource('custom-events', CustomEventController::class);
 });
