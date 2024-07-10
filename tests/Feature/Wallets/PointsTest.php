@@ -5,7 +5,7 @@ namespace Tests\Feature\Wallets;
 use App\Actions\Tenant\Wallet\AddPoints;
 use App\Actions\Tenant\Wallet\GetPointsBalance;
 use App\Actions\Tenant\Wallet\UsePoints;
-use App\Exceptions\Wallets\InsufficientBalanceException;
+use App\Exceptions\Wallet\InsufficientBalanceException;
 use App\Models\Customer;
 use App\Models\Wallet;
 use PHPUnit\Framework\Attributes\Test;

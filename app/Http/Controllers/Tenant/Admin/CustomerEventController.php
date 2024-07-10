@@ -10,15 +10,20 @@ class CustomerEventController extends CrudController
     public $model = CustomerEvent::class;
     public $route = 'customer-events';
 
+    public function getShowView($id = null)
+    {
+        return 'tenant.admin.customer.events.show';
+    }
+
     public function fields($id = null)
     {
         return [
             [
-                'name' => 'event-date',
+                'name' => 'event_date',
             ],
             [
-                'name'    => 'event',
-                'display' => fn($model) => $model->event->name,
+                'name' => 'event',
+                'view' => 'tenant.admin.displayers.customer_event',
             ],
             [
                 'name'    => 'customer',
@@ -26,7 +31,7 @@ class CustomerEventController extends CrudController
             ],
             [
                 'name'    => 'actions',
-                'display' => fn($row) => $this->getEditRowButton($row),
+                'display' => fn($row) => $this->getViewRowButton($row) . ' ' . $this->getEditRowButton($row),
                 'create'  => false,
                 'edit'    => false,
             ],

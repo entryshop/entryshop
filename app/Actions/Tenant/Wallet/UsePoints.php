@@ -2,7 +2,7 @@
 
 namespace App\Actions\Tenant\Wallet;
 
-use App\Exceptions\Wallets\InsufficientBalanceException;
+use App\Exceptions\Wallet\InsufficientBalanceException;
 use App\Models\Point;
 use Illuminate\Support\Facades\DB;
 use Parse\Admin\Concerns\AsAction;

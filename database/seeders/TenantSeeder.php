@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Client;
+use App\Models\Coupon;
 use App\Models\Customer;
 use App\Models\CustomerEvent;
 use App\Models\CustomEvent;
@@ -52,7 +53,14 @@ class TenantSeeder extends Seeder
             'attributes'  => [
                 'count' => 1000,
                 'date'  => '2024-01-06',
+                'a'     => '2024-01-06',
+                'b'     => '2024-01-06',
+                'v'     => '2024-01-06',
             ],
+        ]);
+
+        Coupon::factory()->create([
+            'name' => '满 100 减 12',
         ]);
     }
 }

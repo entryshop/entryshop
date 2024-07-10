@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions\Wallets;
+namespace App\Exceptions\Wallet;
 
 use Exception;
 
