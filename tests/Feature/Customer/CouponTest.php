@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Tests\Feature\Customer;
 
 use App\Actions\Tenant\Coupon\IssueCoupon;

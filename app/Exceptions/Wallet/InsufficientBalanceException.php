@@ -2,8 +2,8 @@
 
 namespace App\Exceptions\Wallet;
 
-use Exception;
+use App\Exceptions\BusinessException;
 
-class InsufficientBalanceException extends Exception
+class InsufficientBalanceException extends BusinessException
 {
 }
