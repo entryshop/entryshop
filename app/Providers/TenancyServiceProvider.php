@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Actions\Tenant\TenancyAdminBootstrap;
+use App\Http\Middleware\CustomerApiAuthenticate;
 use App\Jobs\Central\LogTenantCreated;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\Facades\Event;
@@ -170,6 +171,7 @@ class TenancyServiceProvider extends ServiceProvider
                     'api',
                     InitializeTenancyByDomain::class,
                     PreventAccessFromCentralDomains::class,
+                    CustomerApiAuthenticate::class,
                 ])
                     ->prefix('api')
                     ->as('tenant.api.')

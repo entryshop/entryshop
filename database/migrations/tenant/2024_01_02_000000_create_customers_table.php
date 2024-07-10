@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('gender')->nullable();
+            $table->string('password')->nullable();
             $table->date('birth')->nullable();
             $table->string('referrer_token')->nullable();
             $table->dateTime('registered_at')->nullable();

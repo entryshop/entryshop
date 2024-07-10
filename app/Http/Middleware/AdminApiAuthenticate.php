@@ -10,6 +10,9 @@ class AdminApiAuthenticate
 {
     public function handle(Request $request, Closure $next): Response
     {
+        if (auth()->user()->is_admin != true) {
+            abort(401, 'Can not access this route.');
+        }
         return $next($request);
     }
 }
