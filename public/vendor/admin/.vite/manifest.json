@@ -135,6 +135,78 @@
     "file": "icons/materialdesignicons-webfont.woff2",
     "src": "resources/assets/fonts/materialdesignicons-webfont.woff2"
   },
+  "resources/assets/fonts/poppins-v21-latin_latin-ext-100.woff2": {
+    "file": "icons/poppins-v21-latin_latin-ext-100.woff2",
+    "src": "resources/assets/fonts/poppins-v21-latin_latin-ext-100.woff2"
+  },
+  "resources/assets/fonts/poppins-v21-latin_latin-ext-100italic.woff2": {
+    "file": "icons/poppins-v21-latin_latin-ext-100italic.woff2",
+    "src": "resources/assets/fonts/poppins-v21-latin_latin-ext-100italic.woff2"
+  },
+  "resources/assets/fonts/poppins-v21-latin_latin-ext-200.woff2": {
+    "file": "icons/poppins-v21-latin_latin-ext-200.woff2",
+    "src": "resources/assets/fonts/poppins-v21-latin_latin-ext-200.woff2"
+  },
+  "resources/assets/fonts/poppins-v21-latin_latin-ext-200italic.woff2": {
+    "file": "icons/poppins-v21-latin_latin-ext-200italic.woff2",
+    "src": "resources/assets/fonts/poppins-v21-latin_latin-ext-200italic.woff2"
+  },
+  "resources/assets/fonts/poppins-v21-latin_latin-ext-300.woff2": {
+    "file": "icons/poppins-v21-latin_latin-ext-300.woff2",
+    "src": "resources/assets/fonts/poppins-v21-latin_latin-ext-300.woff2"
+  },
+  "resources/assets/fonts/poppins-v21-latin_latin-ext-300italic.woff2": {
+    "file": "icons/poppins-v21-latin_latin-ext-300italic.woff2",
+    "src": "resources/assets/fonts/poppins-v21-latin_latin-ext-300italic.woff2"
+  },
+  "resources/assets/fonts/poppins-v21-latin_latin-ext-500.woff2": {
+    "file": "icons/poppins-v21-latin_latin-ext-500.woff2",
+    "src": "resources/assets/fonts/poppins-v21-latin_latin-ext-500.woff2"
+  },
+  "resources/assets/fonts/poppins-v21-latin_latin-ext-500italic.woff2": {
+    "file": "icons/poppins-v21-latin_latin-ext-500italic.woff2",
+    "src": "resources/assets/fonts/poppins-v21-latin_latin-ext-500italic.woff2"
+  },
+  "resources/assets/fonts/poppins-v21-latin_latin-ext-600.woff2": {
+    "file": "icons/poppins-v21-latin_latin-ext-600.woff2",
+    "src": "resources/assets/fonts/poppins-v21-latin_latin-ext-600.woff2"
+  },
+  "resources/assets/fonts/poppins-v21-latin_latin-ext-600italic.woff2": {
+    "file": "icons/poppins-v21-latin_latin-ext-600italic.woff2",
+    "src": "resources/assets/fonts/poppins-v21-latin_latin-ext-600italic.woff2"
+  },
+  "resources/assets/fonts/poppins-v21-latin_latin-ext-700.woff2": {
+    "file": "icons/poppins-v21-latin_latin-ext-700.woff2",
+    "src": "resources/assets/fonts/poppins-v21-latin_latin-ext-700.woff2"
+  },
+  "resources/assets/fonts/poppins-v21-latin_latin-ext-700italic.woff2": {
+    "file": "icons/poppins-v21-latin_latin-ext-700italic.woff2",
+    "src": "resources/assets/fonts/poppins-v21-latin_latin-ext-700italic.woff2"
+  },
+  "resources/assets/fonts/poppins-v21-latin_latin-ext-800.woff2": {
+    "file": "icons/poppins-v21-latin_latin-ext-800.woff2",
+    "src": "resources/assets/fonts/poppins-v21-latin_latin-ext-800.woff2"
+  },
+  "resources/assets/fonts/poppins-v21-latin_latin-ext-800italic.woff2": {
+    "file": "icons/poppins-v21-latin_latin-ext-800italic.woff2",
+    "src": "resources/assets/fonts/poppins-v21-latin_latin-ext-800italic.woff2"
+  },
+  "resources/assets/fonts/poppins-v21-latin_latin-ext-900.woff2": {
+    "file": "icons/poppins-v21-latin_latin-ext-900.woff2",
+    "src": "resources/assets/fonts/poppins-v21-latin_latin-ext-900.woff2"
+  },
+  "resources/assets/fonts/poppins-v21-latin_latin-ext-900italic.woff2": {
+    "file": "icons/poppins-v21-latin_latin-ext-900italic.woff2",
+    "src": "resources/assets/fonts/poppins-v21-latin_latin-ext-900italic.woff2"
+  },
+  "resources/assets/fonts/poppins-v21-latin_latin-ext-italic.woff2": {
+    "file": "icons/poppins-v21-latin_latin-ext-italic.woff2",
+    "src": "resources/assets/fonts/poppins-v21-latin_latin-ext-italic.woff2"
+  },
+  "resources/assets/fonts/poppins-v21-latin_latin-ext-regular.woff2": {
+    "file": "icons/poppins-v21-latin_latin-ext-regular.woff2",
+    "src": "resources/assets/fonts/poppins-v21-latin_latin-ext-regular.woff2"
+  },
   "resources/assets/fonts/remixicon.eot": {
     "file": "icons/remixicon.eot",
     "src": "resources/assets/fonts/remixicon.eot"
@@ -158,10 +230,6 @@
   "resources/assets/images/auth-one-bg.jpg": {
     "file": "icons/auth-one-bg.jpg",
     "src": "resources/assets/images/auth-one-bg.jpg"
-  },
-  "resources/assets/images/chat-bg-pattern.png": {
-    "file": "icons/chat-bg-pattern.png",
-    "src": "resources/assets/images/chat-bg-pattern.png"
   },
   "resources/assets/images/cover-pattern.png": {
     "file": "icons/cover-pattern.png",
