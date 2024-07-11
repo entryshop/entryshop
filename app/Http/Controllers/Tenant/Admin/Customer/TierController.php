@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Tenant\Admin\Customer;
 
 use App\Models\Tier;
+use App\Models\TierSet;
 use Parse\Admin\Http\Controllers\CrudController;
 
 class TierController extends CrudController
@@ -21,6 +22,8 @@ class TierController extends CrudController
             ],
             [
                 'name'    => 'set',
+                'type'    => 'select',
+                'options' => TierSet::pluck('name', 'id'),
                 'display' => fn($model) => $model->set->name,
             ],
         ];
