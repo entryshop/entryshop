@@ -21,7 +21,8 @@ class TierController extends CrudController
                 'name' => 'level',
             ],
             [
-                'name'    => 'set',
+                'name'    => 'tier_set_id',
+                'label'   => 'Tier Set',
                 'type'    => 'select',
                 'options' => TierSet::pluck('name', 'id'),
                 'display' => fn($model) => $model->set->name,

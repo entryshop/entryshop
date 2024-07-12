@@ -9,6 +9,7 @@ class CustomerController extends CrudController
 {
     public $model = Customer::class;
     public $route = 'customers';
+    public $can_create = true;
 
     public function fields($id = null)
     {
