@@ -110,6 +110,9 @@ class TenantController extends CrudController
                 'module_content'   => $request->get('module_content') ? 1 : 0,
             ]);
         });
+
+        admin()->success('Settings updated successfully.');
+
         return redirect()->back();
     }
 }
