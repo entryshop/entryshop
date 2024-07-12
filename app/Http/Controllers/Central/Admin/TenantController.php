@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Central;
+namespace App\Http\Controllers\Central\Admin;
 
 use App\Actions\Central\CreateTenantAction;
+use App\Actions\Tenant\Wallet\GetWallet;
 use App\Models\Central\Tenant;
+use App\Models\Customer;
+use App\Models\Transaction;
 use App\Support\Helper;
 use Illuminate\Http\Request;
 use Parse\Admin\Http\Controllers\CrudController;
@@ -73,12 +76,19 @@ class TenantController extends CrudController
 
     public function getShowView($id = null)
     {
-        return 'central.tenants.show';
+        return 'central.admin.tenants.show';
     }
 
     public function getShowData($id)
     {
         $model    = Tenant::findOrFail($id);
+        $summary  = $model->run(function () {
+            return [
+                'customers'    => Customer::count(),
+                'transactions' => Transaction::count(),
+                'wallet'       => GetWallet::run(),
+            ];
+        });
         $settings = $model->run(function () {
             return [
                 'module_coupons'   => Helper::setting('module_coupons', 0),
@@ -87,7 +97,7 @@ class TenantController extends CrudController
             ];
         });
 
-        return compact('model', 'settings');
+        return compact('model', 'settings', 'summary');
     }
 
     public function settings($id, Request $request)

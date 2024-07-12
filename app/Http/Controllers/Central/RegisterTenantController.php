@@ -12,7 +12,7 @@ class RegisterTenantController extends Controller
 {
     public function show(): View
     {
-        return view('central.tenants.register');
+        return view('central.web.register');
     }
 
     public function submit(Request $request): RedirectResponse

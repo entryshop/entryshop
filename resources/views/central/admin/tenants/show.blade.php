@@ -1,6 +1,7 @@
 <x-admin::layouts.app>
     <x-admin::widgets.breadcrmbs :title="'Tenant: '. $model->name" back="/admin/tenants"/>
     <div class="row">
+        @dump($summary)
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
