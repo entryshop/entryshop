@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use App\Http\Middleware\CentralAdminPanelInit;
-use App\Http\Middleware\CustomerApiAuthenticate;
-use App\Http\Middleware\TenantAdminPanelInit;
+use App\Http\Middleware\Central\CentralAdminPanelInit;
+use App\Http\Middleware\Tenant\TenantAdminPanelInit;
+use App\Http\Middleware\Tenant\TenantCustomerApiAuthenticate;
 use App\Jobs\Central\LogTenantCreated;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\Facades\Event;
@@ -20,9 +20,6 @@ use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 
 class TenancyServiceProvider extends ServiceProvider
 {
-    // By default, no namespace is used to support the callable array syntax.
-    public static string $controllerNamespace = '';
-
     public function events()
     {
         return [
@@ -176,7 +173,7 @@ class TenancyServiceProvider extends ServiceProvider
                     'api',
                     InitializeTenancyByDomain::class,
                     PreventAccessFromCentralDomains::class,
-                    CustomerApiAuthenticate::class,
+                    TenantCustomerApiAuthenticate::class,
                 ])
                     ->prefix('api')
                     ->as('tenant.api.')

@@ -3,29 +3,25 @@
 namespace App\Actions\Tenant;
 
 use App\Actions\Tenant\Support\GetTenantAdminMenu;
+use App\Support\Helper;
 use Lorisleiva\Actions\Concerns\AsAction;
-use Stancl\Tenancy\Events\TenancyInitialized;
 
 class TenancyAdminBootstrap
 {
     use AsAction;
 
-    public function handle($tenant)
+    public function handle()
     {
         $menus = GetTenantAdminMenu::run();
 
         admin()
+            ->cspNonce(csp_nonce())
             ->theme()
-            ->brandName($tenant->name)
+            ->brandName(Helper::setting('site_name', tenant('name')))
             ->logout('/admin/logout')
-            ->logo('/images/logo-dark.png')
-            ->miniLogo('/images/logo-dark-sm.png')
+            ->logo(Helper::setting('logo', '/images/logo-dark.png'))
+            ->miniLogo(Helper::setting('logo_mini', '/images/logo-dark-sm.png'))
             ->menus($menus)
             ->uploadUsing(fn($file) => tenant_asset($file->store('uploads')));
-    }
-
-    public function asListener(TenancyInitialized $event)
-    {
-        $this->handle($event->tenancy->tenant);
     }
 }

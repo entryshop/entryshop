@@ -114,6 +114,10 @@ class GetTenantAdminMenu
                     'title' => 'Developer',
                     'url'   => '/admin/admin-users',
                 ],
+                [
+                    'title' => 'Basic',
+                    'url'   => '/admin/settings/basic',
+                ],
             ],
         ];
         return $menus;

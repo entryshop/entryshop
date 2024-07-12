@@ -18,4 +18,8 @@ Route::group(['middleware' => admin()->getAuthMiddleware()], function () {
     Route::resource('wallets', Admin\WalletController::class);
     Route::resource('customer-events', Admin\Customer\CustomerEventController::class);
     Route::resource('custom-events', Admin\Customer\CustomEventController::class);
+
+    // Basic Setting
+    Route::get('settings/basic', [Admin\Setting\BasicSettingController::class, 'index'])->name('settings.basic');
+    Route::post('settings/basic', [Admin\Setting\BasicSettingController::class, 'store'])->name('settings.basic.store');
 });

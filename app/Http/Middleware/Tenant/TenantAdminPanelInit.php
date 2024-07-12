@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\Tenant;
 
-use App\Actions\Central\CentralAdminBootstrap;
+use App\Actions\Tenant\TenancyAdminBootstrap;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class CentralAdminPanelInit
+class TenantAdminPanelInit
 {
     public function handle(Request $request, Closure $next): Response
     {
-        CentralAdminBootstrap::run();
+        TenancyAdminBootstrap::run();
         return $next($request);
     }
 }

@@ -11,6 +11,7 @@ class CentralAdminBootstrap
     public function handle()
     {
         admin()
+            ->cspNonce(csp_nonce())
             ->theme()
             ->brandName('EntryShop')
             ->logout('/admin/logout')

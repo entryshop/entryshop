@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\Tenant;
 
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminApiAuthenticate
+class TenantAdminApiAuthenticate
 {
     public function handle(Request $request, Closure $next): Response
     {
