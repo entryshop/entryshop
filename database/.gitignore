@@ -1,2 +1,3 @@
 *.sqlite*
 *tenant_*
+test_tenant*
