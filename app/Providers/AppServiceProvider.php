@@ -14,9 +14,5 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         admin()->cspNonce(csp_nonce());
-
-        if (empty(tenant('id'))) {
-            CentralAdminBootstrap::run();
-        }
     }
 }

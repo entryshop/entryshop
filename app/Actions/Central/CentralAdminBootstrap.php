@@ -10,9 +10,12 @@ class CentralAdminBootstrap
 
     public function handle()
     {
-        admin()->theme()
+        admin()
+            ->theme()
             ->brandName('EntryShop')
             ->logout('/admin/logout')
+            ->logo('/images/logo-dark.png')
+            ->miniLogo('/images/logo-dark-sm.png')
             ->menus([
                 [
                     'title' => 'Dashboard',

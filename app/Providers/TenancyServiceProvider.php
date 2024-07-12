@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use App\Actions\Tenant\TenancyAdminBootstrap;
+use App\Http\Middleware\CentralAdminPanelInit;
 use App\Http\Middleware\CustomerApiAuthenticate;
+use App\Http\Middleware\TenantAdminPanelInit;
 use App\Jobs\Central\LogTenantCreated;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\Facades\Event;
@@ -75,7 +76,6 @@ class TenancyServiceProvider extends ServiceProvider
             Events\InitializingTenancy::class => [],
             Events\TenancyInitialized::class  => [
                 Listeners\BootstrapTenancy::class,
-                TenancyAdminBootstrap::class,
             ],
 
             Events\EndingTenancy::class => [],
@@ -125,12 +125,16 @@ class TenancyServiceProvider extends ServiceProvider
     protected function mapRoutes()
     {
         $this->app->booted(function () {
-            if (file_exists(base_path('routes/central.php'))) {
+            if (file_exists(base_path('routes/central/admin.php'))) {
                 foreach (config('tenancy.central_domains') as $domain) {
                     Route::domain($domain)
-                        ->middleware('web')
-                        ->namespace(static::$controllerNamespace)
-                        ->group(base_path('routes/central.php'));
+                        ->prefix('admin')
+                        ->as('admin.')
+                        ->middleware([
+                            'web',
+                            CentralAdminPanelInit::class,
+                        ])
+                        ->group(base_path('routes/central/admin.php'));
                 }
             }
 
@@ -139,6 +143,7 @@ class TenancyServiceProvider extends ServiceProvider
                     'web',
                     InitializeTenancyByDomain::class,
                     PreventAccessFromCentralDomains::class,
+                    TenantAdminPanelInit::class,
                 ])
                     ->as('tenant.admin.')
                     ->prefix('admin')
@@ -191,6 +196,9 @@ class TenancyServiceProvider extends ServiceProvider
             Middleware\InitializeTenancyByDomainOrSubdomain::class,
             Middleware\InitializeTenancyByPath::class,
             Middleware\InitializeTenancyByRequestData::class,
+
+            CentralAdminPanelInit::class,
+            TenantAdminPanelInit::class,
         ];
 
         foreach (array_reverse($tenancyMiddleware) as $middleware) {
