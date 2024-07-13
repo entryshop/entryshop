@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Policies;
 
 use Spatie\Csp\Directive;
 use Spatie\Csp\Keyword;
