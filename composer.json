@@ -3,15 +3,16 @@
     "type": "project",
     "require": {
         "php": "^8.2",
+        "ext-zip": "*",
         "laravel-workflow/laravel-workflow": "^1.0",
+        "laravel-workflow/waterline": "^1.0",
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "parse/admin": "*@dev",
         "spatie/laravel-backup": "^9.0",
         "spatie/laravel-csp": "^2.10",
-        "stancl/tenancy": "^3.8",
-        "ext-zip": "*"
+        "stancl/tenancy": "^3.8"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13",
