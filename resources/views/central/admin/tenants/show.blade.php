@@ -8,23 +8,18 @@
                 </div>
                 <x-admin::forms.form action="{{route('admin.tenants.settings', $model->id)}}">
                     <div class="card-body">
-                        <div class="d-flex flex-wrap gap-3">
-                            <x-admin::forms.inputs.switch
-                                name="module_coupons"
-                                :value="$settings['module_coupons'] ?? false"
-                                label="Coupons module"/>
-                            <x-admin::forms.inputs.switch
-                                name="module_campaigns"
-                                :value="$settings['module_campaigns'] ?? false"
-                                label="Campaigns module"/>
-                            <x-admin::forms.inputs.switch
-                                name="module_content"
-                                :value="$settings['module_content'] ?? false"
-                                label="Content module"/>
+                        <div class="d-flex flex-wrap gap-4">
+                            @foreach($modules as $module)
+                                <x-admin::forms.inputs.switch
+                                    :id="'module_'.$module['name']"
+                                    :name="$module['name']"
+                                    :label="$module['label']"
+                                    :value="$module['value'] ?? false"/>
+                            @endforeach
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-primary" type="submit">Submit</button>
+                        <button class="btn btn-primary" type="submit">@lang('admin::base.submit')</button>
                     </div>
                 </x-admin::forms.form>
             </div>

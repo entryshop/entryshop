@@ -6,7 +6,6 @@ use App\Actions\Central\CreateTenantAction;
 use App\Actions\Tenant\Wallet\GetWallet;
 use App\Models\Central\Tenant;
 use App\Models\Customer;
-use App\Models\Transaction;
 use App\Support\Helper;
 use Illuminate\Http\Request;
 use Parse\Admin\Http\Controllers\CrudController;
@@ -14,6 +13,16 @@ use Parse\Admin\Http\Controllers\CrudController;
 class TenantController extends CrudController
 {
     public $model = Tenant::class;
+    public $can_create = true;
+
+    public function getModules()
+    {
+        return [
+            'module_coupons'   => 'Coupons',
+            'module_campaigns' => 'Campaigns',
+            'module_content'   => 'Content',
+        ];
+    }
 
     public function filters()
     {
@@ -49,6 +58,11 @@ class TenantController extends CrudController
         ];
     }
 
+    public function getRowActions()
+    {
+        return fn($model) => $this->getViewRowButton($model);
+    }
+
     public function form($id = null)
     {
         return [
@@ -70,8 +84,8 @@ class TenantController extends CrudController
         CreateTenantAction::run([
             'name' => request('name'),
         ], request('domain'));
-
-        return redirect(route('central.admin.tenants.index'));
+        admin()->success('Tenant created successfully.');
+        return redirect()->back();
     }
 
     public function getShowView($id = null)
@@ -81,34 +95,38 @@ class TenantController extends CrudController
 
     public function getShowData($id)
     {
-        $model    = Tenant::findOrFail($id);
-        $summary  = $model->run(function () {
+        $model   = Tenant::findOrFail($id);
+        $summary = $model->run(function () {
             return [
-                'customers'    => Customer::count(),
-                'transactions' => Transaction::count(),
-                'wallet'       => GetWallet::run(),
-            ];
-        });
-        $settings = $model->run(function () {
-            return [
-                'module_coupons'   => Helper::setting('module_coupons', 0),
-                'module_campaigns' => Helper::setting('module_campaigns', 0),
-                'module_content'   => Helper::setting('module_content', 0),
+                'customers' => Customer::count(),
+                'wallet'    => GetWallet::run(),
             ];
         });
 
-        return compact('model', 'settings', 'summary');
+        $modules = $model->run(function () {
+            $result = [];
+            foreach ($this->getModules() as $name => $label) {
+                $result[] = [
+                    'name'  => $name,
+                    'label' => $label,
+                    'value' => Helper::setting($name, 0),
+                ];
+            }
+            return $result;
+        });
+
+        return compact('model', 'modules', 'summary');
     }
 
     public function settings($id, Request $request)
     {
         $tenant = Tenant::findOrFail($id);
         $tenant->run(function () use ($request) {
-            Helper::setting([
-                'module_coupons'   => $request->get('module_coupons') ? 1 : 0,
-                'module_campaigns' => $request->get('module_campaigns') ? 1 : 0,
-                'module_content'   => $request->get('module_content') ? 1 : 0,
-            ]);
+            $settings = [];
+            foreach ($this->getModules() as $name => $label) {
+                $settings[$name] = $request->get($name) ? 1 : 0;
+            }
+            Helper::setting($settings);
         });
 
         admin()->success('Settings updated successfully.');
