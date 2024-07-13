@@ -20,6 +20,8 @@ class TenantController extends CrudController
         return [
             'module_coupons'   => 'Coupons',
             'module_campaigns' => 'Campaigns',
+            'module_badges'    => 'Badges',
+            'module_rewards'   => 'Rewards',
             'module_content'   => 'Content',
         ];
     }

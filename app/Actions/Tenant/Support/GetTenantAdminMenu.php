@@ -52,6 +52,11 @@ class GetTenantAdminMenu
                 'icon'  => 'ri-wallet-3-line',
                 'url'   => '/admin/wallets',
             ],
+            [
+                'title' => 'Stores',
+                'icon'  => 'ri-store-2-line',
+                'url'   => '/admin',
+            ],
         ];
 
         if (Helper::setting('module_coupons')) {
@@ -66,7 +71,7 @@ class GetTenantAdminMenu
             $menus[] = [
                 'title' => 'Campaigns',
                 'icon'  => 'ri-flag-line',
-                'url'   => '/admin',
+                'url'   => '/admin/campaigns',
             ];
         }
 
