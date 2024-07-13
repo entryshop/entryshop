@@ -8,8 +8,10 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "parse/admin": "*@dev",
+        "spatie/laravel-backup": "^9.0",
         "spatie/laravel-csp": "^2.10",
-        "stancl/tenancy": "^3.8"
+        "stancl/tenancy": "^3.8",
+        "ext-zip": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
