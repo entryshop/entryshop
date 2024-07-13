@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'path' => env('WATERLINE_PATH', 'waterline'),
+    'path' => env('WATERLINE_PATH', 'admin/waterline'),
 
     /*
     |--------------------------------------------------------------------------
