@@ -3,8 +3,6 @@
 namespace App\Campaigns;
 
 use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\Log;
-use Stancl\JobPipeline\JobPipeline;
 
 abstract class Campaign
 {
@@ -26,17 +24,16 @@ abstract class Campaign
 
     public static function boot()
     {
-        Log::debug('booting campaign: '. (new static())->name);
-
-        foreach (static::events() as $event => $listeners) {
-            foreach ($listeners as $listener) {
-                if ($listener instanceof JobPipeline) {
-                    $listener = $listener->toListener();
-                }
-
-                Event::listen($event, $listener);
-            }
+        foreach (static::events() as $event) {
+            Event::listen($event, function ($event) {
+                static::triggeredByEvent($event);
+            });
         }
+    }
+
+    public static function triggeredByEvent($event)
+    {
+
     }
 
 }

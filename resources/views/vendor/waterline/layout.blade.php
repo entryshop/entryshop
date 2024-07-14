@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ url('/vendor/waterline/img/favicon.png') }}">
 
-    <title>Waterline{{ config('app.name') ? ' - ' . config('app.name') : '' }}</title>
+    <title>Waterline - {{ tenant('id') }}</title>
 
     <!-- Style sheets-->
     <link href="https://fonts.bunny.net/css?family=Nunito&display=swap" rel="stylesheet">
@@ -29,7 +29,7 @@
             </svg>
 
             <h4 class="mb-0 ml-2">
-                Waterline{{ config('app.name') ? ' - ' . config('app.name') : '' }}</h4>
+                Waterline - {{ tenant('name') }}</h4>
 
             <button class="btn btn-outline-primary ml-auto" :class="{active: autoLoadsNewEntries}" v-on:click.prevent="autoLoadNewEntries" title="Auto Load Entries">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="icon fill-primary">
@@ -96,10 +96,10 @@
 </div>
 
 <!-- Global Waterline Object -->
-<script>
+<script nonce="{{admin()->getCspNonce()}}">
     window.Waterline = @json($waterlineScriptVariables);
 </script>
 
-<script src="{{url(mix('app.js', 'vendor/waterline'))}}"></script>
+<script nonce="{{admin()->getCspNonce()}}" src="{{url(mix('app.js', 'vendor/waterline'))}}"></script>
 </body>
 </html>

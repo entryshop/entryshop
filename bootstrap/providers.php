@@ -1,7 +1,10 @@
 <?php
 
+use App\Providers;
+
 return [
-    App\Providers\AppServiceProvider::class,
-    App\Providers\TenancyServiceProvider::class,
-    App\Providers\WaterlineServiceProvider::class,
+    Providers\AppServiceProvider::class,
+    Providers\TenancyServiceProvider::class,
+    Providers\WaterlineServiceProvider::class,
+    Providers\CampaignServiceProvider::class,
 ];

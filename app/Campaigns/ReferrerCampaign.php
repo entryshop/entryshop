@@ -2,8 +2,9 @@
 
 namespace App\Campaigns;
 
-use App\Actions\Tenant\Campaign\StartReferrerCampaign;
 use App\Events\Tenant\CustomerRegisteredEvent;
+use App\Workflows\Campaign\CustomerReferrerCampaign;
+use Workflow\WorkflowStub;
 
 class ReferrerCampaign extends Campaign
 {
@@ -13,9 +14,20 @@ class ReferrerCampaign extends Campaign
     public static function events()
     {
         return [
-            CustomerRegisteredEvent::class => [
-                StartReferrerCampaign::class
-            ]
+            CustomerRegisteredEvent::class,
         ];
+    }
+
+    public static function triggeredByEvent($event)
+    {
+        $customer  = $event->customer;
+        $campaigns = \App\Models\Campaign::where('type', static::class)->get();
+        foreach ($campaigns as $campaign) {
+            $workflow = WorkflowStub::make(CustomerReferrerCampaign::class);
+            $workflow->start([
+                'campaign_id' => $campaign->id,
+                'customer_id' => $customer->id,
+            ]);
+        }
     }
 }

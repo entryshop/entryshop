@@ -2,12 +2,15 @@
 
 namespace Database\Seeders;
 
+use App\Campaigns\ReferrerCampaign;
+use App\Models\Campaign;
 use App\Models\Client;
 use App\Models\Coupon;
 use App\Models\Customer;
 use App\Models\CustomerEvent;
 use App\Models\CustomEvent;
 use App\Models\TierSet;
+use App\Models\Wallet;
 use Illuminate\Database\Seeder;
 use Parse\Admin\Models\AdminUser;
 
@@ -79,6 +82,16 @@ class TenantSeeder extends Seeder
         $tier_set->tiers()->create([
             'name'  => 'Gold',
             'level' => 3,
+        ]);
+
+        Wallet::create([
+            'name'       => 'Points',
+            'is_default' => true,
+        ]);
+
+        Campaign::create([
+            'name' => 'Referrer Campaign',
+            'type' => ReferrerCampaign::class,
         ]);
     }
 }

@@ -10,9 +10,5 @@ use Stancl\JobPipeline\JobPipeline;
 
 class AppServiceProvider extends ServiceProvider
 {
-    public function register()
-    {
-        $this->app->register(CampaignServiceProvider::class);
-    }
 
 }
