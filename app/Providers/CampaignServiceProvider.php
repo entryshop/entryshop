@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Campaigns\EmailBroadcastCampaign;
+use App\Campaigns\TransactionCampaign;
 use App\Campaigns\ReferrerCampaign;
 use Illuminate\Support\ServiceProvider;
 
@@ -13,7 +13,7 @@ class CampaignServiceProvider extends ServiceProvider
     {
         return [
             ReferrerCampaign::class,
-            EmailBroadcastCampaign::class,
+            TransactionCampaign::class,
         ];
     }
 

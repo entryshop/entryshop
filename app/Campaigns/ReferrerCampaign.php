@@ -2,6 +2,7 @@
 
 namespace App\Campaigns;
 
+use App\Events\Contracts\HasCustomer;
 use App\Events\Tenant\CustomerRegisteredEvent;
 use App\Workflows\Campaign\CustomerReferrerCampaign;
 use Workflow\WorkflowStub;
@@ -18,7 +19,7 @@ class ReferrerCampaign extends Campaign
         ];
     }
 
-    public static function triggeredByEvent($event)
+    public static function triggeredByEvent(HasCustomer $event)
     {
         $customer  = $event->customer;
         $campaigns = \App\Models\Campaign::where('type', static::class)->get();

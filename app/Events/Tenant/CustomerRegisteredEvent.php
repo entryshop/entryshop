@@ -2,19 +2,14 @@
 
 namespace App\Events\Tenant;
 
+use App\Events\Contracts\HasCustomer;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class CustomerRegisteredEvent
+class CustomerRegisteredEvent implements HasCustomer
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
-    public $customer;
-
-    public function __construct($customer)
-    {
-        $this->customer = $customer;
-    }
+    use \App\Events\Concerns\HasCustomer;
 
 }

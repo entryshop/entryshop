@@ -2,7 +2,7 @@
 
 namespace App\Actions\Tenant\Support;
 
-use App\Campaigns\EmailBroadcastCampaign;
+use App\Campaigns\TransactionCampaign;
 use App\Campaigns\ReferrerCampaign;
 use Parse\Admin\Concerns\AsAction;
 
@@ -19,7 +19,7 @@ class GetCampaignTypes
             ],
             [
                 'name'  => 'Email broadcast',
-                'value' => EmailBroadcastCampaign::class
+                'value' => TransactionCampaign::class
             ],
         ];
     }
