@@ -20,4 +20,5 @@ class Helper
         }
         return Setting::firstWhere('key', $key)->value ?? $default;
     }
+
 }

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Campaigns\ReferrerCampaign;
+use App\Events\Tenant\Transaction\TransactionCreatedEvent;
 use App\Models\Campaign;
 use App\Models\Client;
 use App\Models\Coupon;
@@ -11,6 +11,7 @@ use App\Models\CustomerEvent;
 use App\Models\CustomEvent;
 use App\Models\TierSet;
 use App\Models\Wallet;
+use App\Workflows\Activities\GivePointToCustomer;
 use Illuminate\Database\Seeder;
 use Parse\Admin\Models\AdminUser;
 
@@ -90,8 +91,31 @@ class TenantSeeder extends Seeder
         ]);
 
         Campaign::create([
-            'name' => 'Referrer Campaign',
-            'type' => ReferrerCampaign::class,
+            'name'     => 'Transaction campaign',
+            'type'     => 'direct',
+            'triggers' => [
+                'type'  => 'event',
+                'event' => TransactionCreatedEvent::class,
+            ],
+            'rules'    => [
+                [
+                    'conditions' => [
+                    ],
+                    'effects'    => [
+                        [
+                            'type'     => 'activity',
+                            'activity' => GivePointToCustomer::class,
+                            'target'   => 'customer',
+                            'params'   => [
+                                'points' => [
+                                    'type'  => 'rate',
+                                    'value' => 2,
+                                ],
+                            ],
+                        ]
+                    ],
+                ],
+            ],
         ]);
     }
 }

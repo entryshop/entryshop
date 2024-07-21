@@ -16,7 +16,6 @@ class CustomWorkflow extends Workflow
     {
         $this->context = $params;
         $activities    = $activities ?? $this->getActivities();
-        Log::debug($activities);
         return $this->runActivities($activities);
     }
 
@@ -56,8 +55,6 @@ class CustomWorkflow extends Workflow
                     $result = yield $this->makeActivity($activity);
                     break;
                 default:
-                    Log::debug('unknown activity type');
-                    Log::debug($activity);
                     break;
             }
 
@@ -72,7 +69,6 @@ class CustomWorkflow extends Workflow
     public function makeActivity($activity)
     {
         return ActivityStub::make($activity['class'], $activity['params'] ?? [], $this->context);
-
     }
 
 }

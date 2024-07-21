@@ -21,7 +21,8 @@ class ReferrerCampaign extends Campaign
 
     public static function triggeredByEvent(HasCustomer $event)
     {
-        $customer  = $event->customer;
+        $customer = $event->getCustomer();
+
         $campaigns = \App\Models\Campaign::where('type', static::class)->get();
         foreach ($campaigns as $campaign) {
             $workflow = WorkflowStub::make(CustomerReferrerCampaign::class);

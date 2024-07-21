@@ -2,7 +2,6 @@
 
 namespace App\Campaigns;
 
-use App\Events\Contracts\HasCustomer;
 use Illuminate\Support\Facades\Event;
 
 abstract class Campaign
@@ -26,15 +25,10 @@ abstract class Campaign
     public static function boot()
     {
         foreach (static::events() as $event) {
-            Event::listen($event, function (HasCustomer $event) {
+            Event::listen($event, function ($event) {
                 static::triggeredByEvent($event);
             });
         }
-    }
-
-    public static function triggeredByEvent(HasCustomer $event)
-    {
-        // should be implemented in child class
     }
 
 }

@@ -10,7 +10,10 @@ return new class extends Migration {
         Schema::create('campaigns', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->string('type');
+            $table->string('type')->nullable();
+            $table->text('triggers')->nullable();
+            $table->mediumText('rules')->nullable();
+            $table->text('meta')->nullable();
             $table->timestamps();
         });
     }

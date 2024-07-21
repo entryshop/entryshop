@@ -17,7 +17,6 @@ class CampaignController extends CrudController
         return [
             [
                 'name'    => 'name',
-                'display' => fn($model) => '<a href="'.route('tenant.admin.campaigns.'.$model->campaign->code.'.show', $model->id).'">'.$model->name.'</a>',
             ],
             [
                 'name'    => 'type',
@@ -25,6 +24,13 @@ class CampaignController extends CrudController
                 'options' => collect(GetCampaignTypes::run())->pluck('name', 'value'),
             ],
         ];
+    }
+
+    public function show($id)
+    {
+        return view('tenant.admin.campaign.show', [
+            'model' => Campaign::findOrFail($id),
+        ]);
     }
 
 }

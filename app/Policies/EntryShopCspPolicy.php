@@ -12,8 +12,6 @@ class EntryShopCspPolicy extends Policy
     {
         $this
             ->configureForDefault()
-            ->configureForGoogle()
-            ->configureForCDN()
             ->reportOnly();
 
         if (app()->hasDebugModeEnabled()) {
@@ -43,31 +41,6 @@ class EntryShopCspPolicy extends Policy
             ->addDirective(Directive::STYLE, Keyword::SELF)
             ->addNonceForDirective(Directive::SCRIPT)
             ->addNonceForDirective(Directive::STYLE);
-    }
-
-    protected function configureForGoogle()
-    {
-        return $this
-            ->addDirective(Directive::FONT, 'fonts.gstatic.com')
-            ->addDirective(Directive::FONT, 'fonts.googleapis.com')
-            ->addDirective(Directive::FONT, 'fonts.bunny.net')
-            ->addDirective(Directive::STYLE, 'fonts.googleapis.com')
-            ->addDirective(Directive::STYLE, 'fonts.gstatic.com')
-            ->addDirective(Directive::FRAME, ['https://www.google.com/recaptcha/', 'https://recaptcha.google.com/recaptcha/'])
-            ->addDirective(Directive::SCRIPT, ['https://www.google.com/recaptcha/', 'https://www.gstatic.com/recaptcha/']);
-    }
-
-    protected function configureForCDN()
-    {
-        return $this
-            ->addDirective(Directive::STYLE, 'https://cdn.jsdelivr.net')
-            ->addDirective(Directive::STYLE, 'https://api.mapbox.com')
-            ->addDirective(Directive::STYLE, 'https://fonts.bunny.net')
-            ->addDirective(Directive::STYLE, 'https://unpkg.com')
-            ->addDirective(Directive::SCRIPT, 'https://cdn.jsdelivr.net')
-            ->addDirective(Directive::SCRIPT, 'https://api.mapbox.com')
-            ->addDirective(Directive::SCRIPT, 'https://cdnjs.cloudflare.com')
-            ->addDirective(Directive::SCRIPT, 'https://unpkg.com');
     }
 
 }
