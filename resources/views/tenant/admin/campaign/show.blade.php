@@ -1,4 +1,5 @@
 <x-admin::layouts.app>
+    <x-admin::widgets.breadcrmbs title="Campaign builder"/>
     <div id="root"></div>
 
     @push('scripts')

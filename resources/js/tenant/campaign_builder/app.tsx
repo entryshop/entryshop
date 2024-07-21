@@ -1,6 +1,6 @@
 // @ts-ignore
 import ReactDOM from 'react-dom/client';
-import CampaignBuilder from "./Components/CampaignBuilder";
+import CampaignBuilder from "./components/CampaignBuilder";
 
 const rootElement = document.getElementById('root');
 
